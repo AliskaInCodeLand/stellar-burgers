@@ -1,7 +1,6 @@
 import { Preloader } from '@ui';
 import { useEffect } from 'react';
 import { FeedUI } from '@ui-pages';
-import { TOrder } from '@utils-types';
 import { FC } from 'react';
 import { useSelector } from '../../services/store';
 import { getFeeds, selectFeed } from '../../services/slices/feed-slice';
