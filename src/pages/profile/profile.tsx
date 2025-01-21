@@ -1,52 +1,63 @@
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
+import { useSelector, useDispatch } from '../../services/store';
+import { selectUserData, updateUser } from '../../services/slices/user-slice';
+
 
 export const Profile: FC = () => {
-  /** TODO: взять переменную из стора */
-  const user = {
-    name: '',
-    email: ''
-  };
+  const userData = useSelector(selectUserData);
+  const dispatch = useDispatch();
 
   const [formValue, setFormValue] = useState({
-    name: user.name,
-    email: user.email,
+    name: userData?.name || '',
+    email: userData?.email || '',
     password: ''
   });
+  let isFormChanged =
+    formValue.name !== userData?.name ||
+    formValue.email !== userData?.email ||
+    !!formValue.password;
+
+  let updateUserError = '';
 
   useEffect(() => {
-    setFormValue((prevState) => ({
-      ...prevState,
-      name: user?.name || '',
-      email: user?.email || ''
-    }));
-  }, [user]);
-
-  const isFormChanged =
-    formValue.name !== user?.name ||
-    formValue.email !== user?.email ||
-    !!formValue.password;
+    if (userData) {
+      setFormValue((prevState) => ({
+        ...prevState,
+        name: userData.name || '',
+        email: userData.email || ''
+      }));
+    }
+  }, [userData]);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
+
+    dispatch(updateUser(formValue))
+      .then((res) => {
+        setFormValue({
+          name: (res.payload as any).user?.name,
+          email: (res.payload as any).user?.email,
+          password: ''
+        });
+      })
+      .catch((err) => (updateUserError = err));
   };
 
   const handleCancel = (e: SyntheticEvent) => {
     e.preventDefault();
     setFormValue({
-      name: user.name,
-      email: user.email,
+      name: userData?.name || '',
+      email: userData?.email || '',
       password: ''
     });
   };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormValue((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value
     }));
   };
-
   return (
     <ProfileUI
       formValue={formValue}
@@ -54,8 +65,7 @@ export const Profile: FC = () => {
       handleCancel={handleCancel}
       handleSubmit={handleSubmit}
       handleInputChange={handleInputChange}
+      updateUserError={updateUserError}
     />
   );
-
-  return null;
 };
