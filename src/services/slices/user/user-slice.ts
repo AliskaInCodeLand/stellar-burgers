@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { setCookie, deleteCookie } from '../../utils/cookie';
+import { setCookie, deleteCookie } from '../../../utils/cookie';
 import { TUser } from '@utils-types';
 import {
   getUserApi,
@@ -7,9 +7,9 @@ import {
   loginUserApi,
   registerUserApi,
   updateUserApi
-} from '@api';
+} from '../../../utils/burger-api';
 
-interface IUserState {
+export interface IUserState {
   user: TUser | null;
   isLoading: boolean;
   error: string | null;
@@ -17,7 +17,7 @@ interface IUserState {
   isAuth: boolean;
 }
 
-const initialState: IUserState = {
+export const initialState: IUserState = {
   user: {
     name: '',
     email: ''

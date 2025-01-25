@@ -9,8 +9,8 @@ import {
   getOrder,
   resetOrder,
   selectOrderModalData
-} from '../../services/slices/order-slice';
-import { selectIngredients } from '../../services/slices/ingredient-slice';
+} from '../../services/slices/order/order-slice';
+import { selectIngredients } from '../../services/slices/ingredient/ingredient-slice';
 
 export const OrderInfo: FC = () => {
   const dispatch = useDispatch();

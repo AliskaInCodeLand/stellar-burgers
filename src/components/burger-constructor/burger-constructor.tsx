@@ -7,13 +7,13 @@ import {
   resetOrder,
   selectOrderModalData,
   selectOrderRequest
-} from '../../services/slices/order-slice';
+} from '../../services/slices/order/order-slice';
 import { useNavigate } from 'react-router-dom';
 import {
   resetConstructor,
   selectBuilder
-} from '../../services/slices/constructor-slice';
-import { selectIsAuth } from '../../services/slices/user-slice';
+} from '../../services/slices/constructor/constructor-slice';
+import { selectIsAuth } from '../../services/slices/user/user-slice';
 
 export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ProfileMenuUI } from '@ui';
-import { logout } from '../../services/slices/user-slice';
+import { logout } from '../../services/slices/user/user-slice';
 import { useDispatch } from '../../services/store';
 
 export const ProfileMenu: FC = () => {
