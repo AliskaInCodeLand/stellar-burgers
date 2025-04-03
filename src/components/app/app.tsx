@@ -10,8 +10,8 @@ import {
   NotFound404
 } from '@pages';
 import { Modal, IngredientDetails, OrderInfo } from '@components';
-import { getIngredients } from '../../services/slices/ingredient-slice';
-import { getUser } from '../../services/slices/user-slice';
+import { getIngredients } from '../../services/slices/ingredient/ingredient-slice';
+import { getUser } from '../../services/slices/user/user-slice';
 import { useEffect } from 'react';
 import {} from '@components';
 import '../../index.css';
@@ -20,7 +20,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AppHeader } from '@components';
 import { useDispatch, useSelector } from '../../services/store';
 import { ProtectedRoute } from '../protected-route/protected-route';
-import { resetOrder } from '../../services/slices/order-slice';
+import { resetOrder } from '../../services/slices/order/order-slice';
 
 const App = () => {
   const location = useLocation();

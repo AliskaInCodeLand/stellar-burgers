@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { orderBurgerApi, getOrderByNumberApi, getOrdersApi } from '@api';
+import { orderBurgerApi, getOrderByNumberApi, getOrdersApi } from '../../../utils/burger-api';
 import { TOrder } from '@utils-types';
 
-interface IOrderState {
+export interface IOrderState {
   data: TOrder[];
   isOrderLoading: boolean;
   orderModalData: TOrder | null;
@@ -11,7 +11,7 @@ interface IOrderState {
   error: string | null;
 }
 
-const initialState: IOrderState = {
+export const initialState: IOrderState = {
   data: [],
   isOrderLoading: false,
   orderModalData: null,

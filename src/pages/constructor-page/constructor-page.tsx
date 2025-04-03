@@ -2,7 +2,7 @@ import store, { useSelector, useDispatch } from '../../services/store';
 import {
   getIngredients,
   selectIngredientsLoading
-} from '../../services/slices/ingredient-slice';
+} from '../../services/slices/ingredient/ingredient-slice';
 import styles from './constructor-page.module.css';
 
 import { BurgerIngredients } from '../../components';

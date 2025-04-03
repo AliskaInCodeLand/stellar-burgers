@@ -6,7 +6,7 @@ import {
   selectIsAuthChecked,
   selectIsLoading,
   selectUserData
-} from '../../services/slices/user-slice';
+} from '../../services/slices/user/user-slice';
 
 type ProtectedRouteProps = {
   onlyUnAuth?: boolean;
